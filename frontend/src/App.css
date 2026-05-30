@@ -1,0 +1,131 @@
+:root {
+  --primary: #2563eb;
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --empty: #22c55e;
+  --claimed: #ef4444;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+h1 {
+  margin-bottom: 5px;
+  color: var(--primary);
+}
+
+.subtitle {
+  color: #64748b;
+  font-style: italic;
+}
+
+.filter-section {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  font-size: 1rem;
+}
+
+.toast {
+  background: #1e293b;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(100px); }
+  to { transform: translateY(0); }
+}
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.room-card {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  transition: transform 0.2s;
+}
+
+.room-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+.room-card.claimed {
+  opacity: 0.8;
+  border-left: 5px solid var(--claimed);
+}
+
+.room-card.empty {
+  border-left: 5px solid var(--empty);
+}
+
+.block-tag {
+  display: inline-block;
+  background: #f1f5f9;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.claim-btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.claim-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.room-card.claimed .claim-btn {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+}
