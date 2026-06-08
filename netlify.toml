@@ -1,0 +1,11 @@
+# Netlify Configuration File for Monorepo Build
+
+[build]
+  # The directory where Netlify runs the build command
+  base = "frontend"
+
+  # The command executed to compile the React app
+  command = "npm run build"
+
+  # The directory containing static files to serve (relative to base)
+  publish = "dist"
