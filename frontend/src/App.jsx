@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
 function App() {
   const [rooms, setRooms] = useState([]);
   const [block, setBlock] = useState('All');
@@ -23,7 +25,7 @@ function App() {
 
   const fetchRooms = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/api/rooms?block=${block}&canteen=${canteen}`);
+      const response = await fetch(`${API_URL}/api/rooms?block=${block}&canteen=${canteen}`);
       const data = await response.json();
       setRooms(data);
     } catch (error) {
@@ -55,7 +57,7 @@ function App() {
     setClaimingRooms(prev => ({ ...prev, [id]: true }));
 
     try {
-      const response = await fetch(`http://localhost:3000/api/claim/${id}`, {
+      const response = await fetch(`${API_URL}/api/claim/${id}`, {
         method: 'POST'
       });
       const data = await response.json();
@@ -88,7 +90,7 @@ function App() {
     setClaimingRooms(prev => ({ ...prev, [id]: true }));
 
     try {
-      const response = await fetch(`http://localhost:3000/api/release/${id}`, {
+      const response = await fetch(`${API_URL}/api/release/${id}`, {
         method: 'POST'
       });
       const data = await response.json();
