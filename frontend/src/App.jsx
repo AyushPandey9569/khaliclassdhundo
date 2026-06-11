@@ -1,6 +1,17 @@
 import { useState, useEffect, useRef } from 'react';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+let API_URL = import.meta.env.VITE_API_URL || "";
+if (!API_URL || API_URL.trim() === "" || API_URL.trim() === "/") {
+  API_URL = "http://localhost:3000";
+} else {
+  API_URL = API_URL.trim();
+  if (!API_URL.startsWith("http://") && !API_URL.startsWith("https://")) {
+    API_URL = "https://" + API_URL;
+  }
+  if (API_URL.endsWith("/")) {
+    API_URL = API_URL.slice(0, -1);
+  }
+}
 
 function App() {
   const [rooms, setRooms] = useState([]);
